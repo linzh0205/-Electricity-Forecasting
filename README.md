@@ -18,9 +18,9 @@ NCKU DSAI HW1 - Electricity Forecasting
 
 
 
-requirements安裝指令:
+3.requirements安裝指令:
 conda install --yes --file requirements.txt
 
-執行程式指令:
+4.執行程式指令:
 python app.py --training train.csv --output submission.csv
 
