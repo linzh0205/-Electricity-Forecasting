@@ -36,16 +36,16 @@ def heatmap(train):
                      yticklabels=cols.values, xticklabels=cols.values)
     #觀察資料分布狀況，發現有些特徵存在較大的偏差值
     sns.set()
-    #cols = ['operating reserve', 'rate', 'MyL#2','Tone']
-    cols = ['operating reserve', 'rate', 'MyL#2','ele_pro','people_use']
+    cols = ['operating reserve', 'rate', 'MyL#2','Tone']
+    #cols = ['operating reserve', 'rate', 'MyL#2','ele_pro','people_use']
     sns.pairplot(train[cols],size=1.2)
     #plt.show()
     #將顯示前一筆最大的數據，並將其刪除，試圖減少偏差值
     train=train.drop(index=train.sort_values(by='rate',ascending=False)['date'][:2].index)
     train=train.drop(index=train.sort_values(by='MyL#2',ascending=False)['date'][:2].index)
-    train=train.drop(index=train.sort_values(by='ele_pro',ascending=False)['date'][:2].index)
-    train=train.drop(index=train.sort_values(by='people_use',ascending=False)['date'][:2].index)
-    #train=train.drop(index=train.sort_values(by='Tone',ascending=False)['date'][:1].index)
+    #train=train.drop(index=train.sort_values(by='ele_pro',ascending=False)['date'][:2].index)
+    #train=train.drop(index=train.sort_values(by='people_use',ascending=False)['date'][:2].index)
+    train=train.drop(index=train.sort_values(by='Tone',ascending=False)['date'][:1].index)
     #print(train)
     return train
 
@@ -55,8 +55,8 @@ def forecasting():
     train_new = heatmap(train)
 
     #建立training dataset
-    #X = train_new[['rate', 'MyL#2','Tone']]
-    X = train_new[['rate', 'MyL#2','ele_pro','people_use']]
+    X = train_new[['rate', 'MyL#2','Tone']]
+    #X = train_new[['rate', 'MyL#2','ele_pro','people_use']]
     #print(X.shape)
     Y = train_new[['operating reserve']]
     #print(Y.shape)
@@ -74,24 +74,20 @@ def forecasting():
     regressor.fit(train_x,train_y)
     
     test = pd.read_csv('test.csv')
-    #test_y = test[['operating reserve']][42:]
+    #test_y = test[['operating reserve']][43:]
     #print(test_y)
-    #pred_x = test[['rate', 'MyL#2','ele_pro','people_use']][11:18]
-    #22~29
-    pred_x = test[['rate', 'MyL#2','ele_pro','people_use']][22:29]
+    #pred_x = test[['rate', 'MyL#2','Tone']][12:19]
+    # #22~29
+    pred_x = test[['rate', 'MyL#2','Tone']][22:29]
     #print(pred_x)
     pred_x = scaler_x.fit_transform(pred_x)
     pred = regressor.predict(pred_x)
     pred=scaler_y.inverse_transform(pred)
     #print("RMSE:", np.sqrt(metrics.mean_squared_error(test_y, pred)))
-    # print(pred)
+    #print(pred)
+
     name = ['operating reserv(MW)']
     pred = pd.DataFrame(pred, columns=name)
-    
-
-    # test['operating reserve']= pred
-    # result = test[['operating reserve']]
-    # print(result)
     date = [['date'],['2021/3/23'],['2021/3/24'],['2021/3/25'],
               ['2021/3/26'],['2021/3/27'],['2021/3/28'],['2021/3/29']]
     name = date.pop(0)
