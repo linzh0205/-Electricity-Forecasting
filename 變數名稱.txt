@@ -4,3 +4,4 @@
 備轉容量(MW)-->operating reserve
 備轉容量率-->rate
 麥寮#2 --> MyL#2
+通宵-->Tone
