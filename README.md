@@ -11,12 +11,15 @@ NCKU DSAI HW1 - Electricity Forecasting
 
 ![heatmap](https://user-images.githubusercontent.com/63357025/111800306-c7cf6900-8906-11eb-94db-4adac1107136.jpeg)
 
+
 ## Feature selection ##
 從heatmap中選擇備轉容量率(%)、民生用電、淨尖峰供電能力與麥寮第二發電廠作為訓練的特徵
 
 ## Data pre-processing ##
-將這些關聯度高的特徵中，刪除訓練資料集中偏差較大的數值
+將這些關聯度高的特徵中，刪除2筆在訓練資料集中偏差較大的數值
+
 ![clean](https://user-images.githubusercontent.com/63357025/111805766-4da1e300-890c-11eb-8afa-6b268e1b3876.png)
+
 
 ## Model training ##
 這此使用的是scikit-learn中的SVR model，此model設有5種kernel包含linear, poly, rbf, sigmoid, precomputed
