@@ -5,6 +5,7 @@ NCKU DSAI HW1 - Electricity Forecasting
 
 選擇2019、2020年的1至12月的dataset訓練SVR模型，預測2021/03/22~03/29的備轉容量。
 
+## Data analysis ##
 1.先使用heatmap尋找與operating reserve關聯度較高的特徵
 
 ![heatmap](https://user-images.githubusercontent.com/63357025/111800306-c7cf6900-8906-11eb-94db-4adac1107136.jpeg)
