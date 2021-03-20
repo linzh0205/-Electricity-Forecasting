@@ -3,7 +3,8 @@
 
 NCKU DSAI HW1 - Electricity Forecasting
 
-選擇2019、2020年的1至12月的dataset訓練SVR模型，預測2021/03/22~03/29的備轉容量。
+選擇台電提供過去2019、2020年的1至12月的發電量資訊包含淨尖峰供電能力、淨尖峰用電量、民生用電、工業用電等..
+並使用Support Vector Regression迴歸模型，預測2021/03/22~03/29的備轉容量(MW)。
 
 ## Data analysis ##
 使用heatmap尋找與operating reserve關聯度較高的特徵
@@ -11,7 +12,7 @@ NCKU DSAI HW1 - Electricity Forecasting
 ![heatmap](https://user-images.githubusercontent.com/63357025/111800306-c7cf6900-8906-11eb-94db-4adac1107136.jpeg)
 
 ## Feature selection ##
-從heatmap中選擇備轉容量率(%)、民生用電、工業用電與麥寮第二發電廠作為訓練的特徵
+從heatmap中選擇備轉容量率(%)、民生用電、淨尖峰供電能力與麥寮第二發電廠作為訓練的特徵
 
 ## Data pre-processing ##
 將這些關聯度高的特徵中，刪除訓練資料集中偏差較大的數值
@@ -25,6 +26,7 @@ NCKU DSAI HW1 - Electricity Forecasting
 
 ## Run the code ##
 將requirements.txt下載後輸入安裝套件指令:
+
 conda install --yes --file requirements.txt
 
 將app.py、train.csv、test.csv、submission.csv載下後(需在同資料夾內)
