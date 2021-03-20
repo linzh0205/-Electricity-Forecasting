@@ -4,7 +4,7 @@
 NCKU DSAI HW1 - Electricity Forecasting
 
 選擇台電提供過去的2019、2020年的1至3月的發電量資訊包含淨尖峰供電能力、淨尖峰用電量、民生用電、工業用電等..
-並使用Support Vector Regression迴歸模型，預測2021/03/22~03/29的備轉容量(MW)。
+並使用Support Vector Regression迴歸模型，預測2021/03/23~03/29的備轉容量(MW)。
 
 ## Data analysis ##
 使用heatmap尋找與operating reserve關聯度較高的特徵
