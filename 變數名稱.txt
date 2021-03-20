@@ -3,4 +3,4 @@
 民生用電-->people_use
 備轉容量(MW)-->operating reserve
 備轉容量率-->rate
-麥寮#1 --> MyL#1
+麥寮#2 --> MyL#2
