@@ -22,8 +22,10 @@ NCKU DSAI HW1 - Electricity Forecasting
 
 
 ## Model training ##
-這此使用的是scikit-learn中的SVR model，此model設有5種kernel包含linear, poly, rbf, sigmoid, precomputed
-本次使用的kernel為poly，需設定Kernel coefficient也就是gamma為0.1、C=1e1。
+這此使用的是scikit-learn中的SVR model，此model設有5種kernel包含linear, poly, rbf, sigmoid, precomputed。
+本次模型參數設定為kernel=poly，Kernel coefficient也就是gamma=0.1、C=1e1。
+將2019年、2020年1月~3月的資料作為training data,並將資料做Standard Scaler輸入至SVR模型中。
+
 
 
 
