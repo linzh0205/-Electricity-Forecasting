@@ -9,7 +9,7 @@ NCKU DSAI HW1 - Electricity Forecasting
 ## Data analysis ##
 使用heatmap尋找與operating reserve關聯度較高的特徵
 
-![heatmap](https://user-images.githubusercontent.com/63357025/111800306-c7cf6900-8906-11eb-94db-4adac1107136.jpeg)
+![heatmap](https://github.com/linzh0205/-Electricity-Forecasting/blob/main/heatmap.jpeg)
 
 
 ## Feature selection ##
