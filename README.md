@@ -26,11 +26,12 @@ NCKU DSAI HW1 - Electricity Forecasting
 
 ## Run the code ##
 將requirements.txt下載後輸入安裝套件指令:
-
+```
 conda install --yes --file requirements.txt
-
+```
 將app.py、train.csv、test.csv、submission.csv載下後(需在同資料夾內)
 
 輸入以下指令:
+```
 python app.py --training train.csv --output submission.csv
-
+```
