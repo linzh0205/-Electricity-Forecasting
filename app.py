@@ -69,15 +69,14 @@ def forecasting():
     train_y = scaler_y.fit_transform(Y)
     #SVR
     regressor = SVR(kernel='poly', C=1e1, gamma=0.01)
-    #LinearSVR
-    #regressor = LinearSVR(loss='epsilon_insensitive',random_state = 10, max_iter=2000)
     regressor.fit(train_x,train_y)
     
     test = pd.read_csv('test.csv')
     #test_y = test[['operating reserve']][43:]
     #print(test_y)
     #pred_x = test[['rate', 'MyL#2','Tone']][12:19]
-    # #22~29
+    #22~29
+    #mean 1/23~1/29
     pred_x = test[['rate', 'MyL#2','Tone']][22:29]
     #print(pred_x)
     pred_x = scaler_x.fit_transform(pred_x)
