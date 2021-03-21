@@ -32,6 +32,11 @@ NCKU DSAI HW1 - Electricity Forecasting
 
 
 ## Run the code ##
+環境
+Python 3.7.1
+```
+conda create -n name python==3.7
+```
 將requirements.txt下載後輸入安裝套件指令:
 ```
 conda install --yes --file requirements.txt
