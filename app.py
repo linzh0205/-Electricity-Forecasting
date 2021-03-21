@@ -1,5 +1,5 @@
 import numpy as np
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 #from sklearn.preprocessing import MinMaxScaler
@@ -20,7 +20,7 @@ if __name__ =='__main__':
                         default='submission.csv',
                         help='output file name')
     args = parser.parse_args()
-
+    
 def heatmap(train):
     #heatmap
     corr=train.corr()
@@ -37,17 +37,28 @@ def heatmap(train):
     #觀察資料分布狀況，發現有些特徵存在較大的偏差值
     sns.set()
     cols = ['operating reserve', 'rate', 'MyL#2','Tone']
-    #cols = ['operating reserve', 'rate', 'MyL#2','ele_pro','people_use']
     sns.pairplot(train[cols],size=1.2)
-    #plt.show()
     #將顯示前一筆最大的數據，並將其刪除，試圖減少偏差值
     train=train.drop(index=train.sort_values(by='rate',ascending=False)['date'][:2].index)
     train=train.drop(index=train.sort_values(by='MyL#2',ascending=False)['date'][:2].index)
     #train=train.drop(index=train.sort_values(by='ele_pro',ascending=False)['date'][:2].index)
     #train=train.drop(index=train.sort_values(by='people_use',ascending=False)['date'][:2].index)
     train=train.drop(index=train.sort_values(by='Tone',ascending=False)['date'][:1].index)
-    #print(train)
+    sns.set()
+    cols = ['operating reserve', 'rate', 'MyL#2','Tone']
+    sns.pairplot(train[cols],size=1.2)
+    plt.show()
     return train
+    
+def sub(pred):
+    name = ['operating reserv(MW)']
+    pred = pd.DataFrame(pred, columns=name)
+    date = [['date'],['2021/3/23'],['2021/3/24'],['2021/3/25'],
+              ['2021/3/26'],['2021/3/27'],['2021/3/28'],['2021/3/29']]
+    name = date.pop(0)
+    date_df = pd.DataFrame(date,columns=name)
+    res = pd.concat([date_df,pred],axis = 1)
+    res.to_csv(args.output,index=0)
 
 def forecasting():
     #import data
@@ -69,30 +80,23 @@ def forecasting():
     train_y = scaler_y.fit_transform(Y)
     #SVR
     regressor = SVR(kernel='poly', C=1e1, gamma=0.01)
+    #LinearSVR
+    #regressor = LinearSVR(loss='epsilon_insensitive',random_state = 10, max_iter=2000)
     regressor.fit(train_x,train_y)
     
     test = pd.read_csv('test.csv')
     #test_y = test[['operating reserve']][43:]
     #print(test_y)
     #pred_x = test[['rate', 'MyL#2','Tone']][12:19]
-    #22~29
-    #mean 1/23~1/29
+    # #22~29
     pred_x = test[['rate', 'MyL#2','Tone']][22:29]
     #print(pred_x)
     pred_x = scaler_x.fit_transform(pred_x)
     pred = regressor.predict(pred_x)
-    pred=scaler_y.inverse_transform(pred)
+    pred =scaler_y.inverse_transform(pred)
     #print("RMSE:", np.sqrt(metrics.mean_squared_error(test_y, pred)))
     #print(pred)
-
-    name = ['operating reserv(MW)']
-    pred = pd.DataFrame(pred, columns=name)
-    date = [['date'],['2021/3/23'],['2021/3/24'],['2021/3/25'],
-              ['2021/3/26'],['2021/3/27'],['2021/3/28'],['2021/3/29']]
-    name = date.pop(0)
-    date_df = pd.DataFrame(date,columns=name)
-    res = pd.concat([date_df,pred],axis = 1)
-    res.to_csv(args.output,index=0)
     # print(res)
-
+    sub(pred)
 forecasting()
+
