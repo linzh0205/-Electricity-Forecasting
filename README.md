@@ -9,7 +9,7 @@ NCKU DSAI HW1 - Electricity Forecasting
 ## Data analysis ##
 使用heatmap尋找與operating reserve關聯度較高的特徵
 
-![heatmap](https://github.com/linzh0205/-Electricity-Forecasting/blob/main/heatmap.jpeg)
+![heatmap](https://github.com/linzh0205/-Electricity-Forecasting/blob/main/plot/heatmap.jpeg)
 
 
 ## Feature selection ##
@@ -18,8 +18,10 @@ NCKU DSAI HW1 - Electricity Forecasting
 ## Data pre-processing ##
 將這些關聯度高的特徵中，刪除2筆在訓練資料集中偏差較大的數值
 
-![clean](https://github.com/linzh0205/-Electricity-Forecasting/blob/main/clean.jpeg)
+![clean](https://github.com/linzh0205/-Electricity-Forecasting/blob/main/plot/clean.jpeg)
 
+
+![del](https://github.com/linzh0205/-Electricity-Forecasting/blob/main/plot/clean_out.jpeg)
 
 ## Model training ##
 這此使用的是scikit-learn中的SVR model，此model設有5種kernel包含linear, poly, rbf, sigmoid, precomputed。
