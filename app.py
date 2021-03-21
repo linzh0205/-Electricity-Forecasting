@@ -51,7 +51,7 @@ def heatmap(train):
     return train
     
 def sub(pred):
-    name = ['operating reserv(MW)']
+    name = ['operating reserve(MW)']
     pred = pd.DataFrame(pred, columns=name)
     date = [['date'],['2021/3/23'],['2021/3/24'],['2021/3/25'],
               ['2021/3/26'],['2021/3/27'],['2021/3/28'],['2021/3/29']]
