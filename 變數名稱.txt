@@ -1,7 +1,12 @@
-淨尖峰供電能力-->ele_pro
-尖峰負載(MW)-->ele
-民生用電-->people_use
-備轉容量(MW)-->operating reserve
-備轉容量率-->rate
-麥寮#2 --> MyL#2
-通宵-->Tone
+淨尖峰供電能力	ele_pro
+尖峰負載(MW)	ele
+備轉容量(MW)	operating reserve
+
+經由hedamap取得與備轉容量較相關的
+1.備轉容量率(rate)
+2.淨尖峰供電能力(ele_pro)
+3.太陽能發電(sun)
+4.民生用電(people_use)
+5.離島(iland)
+requirements安裝指令:
+conda install --yes --file requirements.txt
