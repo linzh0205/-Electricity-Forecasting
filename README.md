@@ -36,7 +36,7 @@ NCKU DSAI HW1 - Electricity Forecasting
 Python 3.7.1
 ```
 conda create -n test python==3.7
-
+activate test
 ```
 路徑移至requirements.txt所在的資料夾，輸入安裝套件指令:
 ```
